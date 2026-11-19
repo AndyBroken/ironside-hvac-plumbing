@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reviews &amp; FAQ — Ironside Heating, Cooling &amp; Plumbing</title>
+<meta name="description" content="Read verified reviews from Columbus homeowners and answers to common questions about Ironside HVAC and plumbing services.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='9' fill='%23ff6a1a'/><path d='M20 7 9 13v8c0 6.5 4.6 10.6 11 12.5 6.4-1.9 11-6 11-12.5v-8z' fill='%230b1f3a'/></svg>">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="reviews">
+<div id="header"></div>
+
+<main>
+<section class="page-hero">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a> / Reviews &amp; FAQ</div>
+    <h1>Reviews &amp; FAQ</h1>
+    <p>Real feedback from homeowners across Central Ohio — and answers to the questions we hear most.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="rating-box reveal">
+      <div class="rating-big"><b>4.9</b><span class="stars">★★★★★</span><small>2,148 verified reviews</small></div>
+      <div class="bars" id="bars"></div>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="rev-grid" id="grid"></div>
+    <div style="text-align:center;margin-top:2.4rem"><button class="btn btn-outline" id="leave">Leave a Review</button></div>
+  </div>
+</section>
+
+<section class="bg-soft" id="faq">
+  <div class="container">
+    <div class="section-head"><div><span class="kicker">FAQ</span><h2>Frequently asked questions</h2><p>Still have questions? Call <a href="tel:+16145550188" style="color:var(--orange);font-weight:700">(614) 555-0188</a> — a real person answers 24/7.</p></div></div>
+    <div class="faq-wrap" id="faqList"></div>
+  </div>
+</section>
+</main>
+
+<div id="footer"></div>
+<script src="assets/data.js"></script>
+<script src="assets/main.js"></script>
+<script>
+$('#bars').innerHTML = [[5, 92, '1,976'], [4, 6, '129'], [3, 1, '26'], [2, .5, '11'], [1, .5, '6']].map(([s, w, n]) => `<div class="bar"><span>${s} ★</span><i style="--w:${w}%"></i><span>${n}</span></div>`).join('');
+const ALL = [{ id: 'all', name: 'All' }, ...CATS];
+$('#filters').innerHTML = ALL.map(c => `<button class="chip" data-cat="${c.id}">${c.name}</button>`).join('');
+function show(cat) {
+  $$('.chip').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+  const list = REVIEWS.filter(r => cat === 'all' || r.cat === cat);
+  $('#grid').innerHTML = list.length ? list.map(reviewCard).join('') : '<p class="empty">No reviews in this category yet.</p>';
+  observeReveals();
+}
+$('#filters').addEventListener('click', e => { const b = e.target.closest('.chip'); if (b) show(b.dataset.cat); });
+show('all');
+$('#faqList').innerHTML = faqList(FAQ);
+$('#leave').addEventListener('click', () => toast('Demo: this would open your review form. Thank you! ⭐'));
+observeReveals();
+</script>
+</body>
+</html>

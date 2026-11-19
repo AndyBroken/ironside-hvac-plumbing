@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Service Areas — Ironside HVAC &amp; Plumbing in Central Ohio</title>
+<meta name="description" content="Ironside serves Columbus, Dublin, Westerville, Hilliard, Upper Arlington, Worthington and 10+ more Central Ohio communities. Check your ZIP code.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='9' fill='%23ff6a1a'/><path d='M20 7 9 13v8c0 6.5 4.6 10.6 11 12.5 6.4-1.9 11-6 11-12.5v-8z' fill='%230b1f3a'/></svg>">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="areas">
+<div id="header"></div>
+
+<main>
+<section class="page-hero">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a> / Service Areas</div>
+    <h1>Service Areas</h1>
+    <p>Trucks stationed across Central Ohio mean faster arrival times — most homes see a technician within 2 hours.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="zip-big reveal">
+      <div><h2>Do we service your home?</h2><p>Enter your ZIP code to check availability and the next open appointment.</p></div>
+      <div>
+        <form class="zip-form" id="zipForm"><input placeholder="e.g. 43017" maxlength="5" inputmode="numeric" aria-label="ZIP code"><button class="btn btn-primary" type="submit">Check ZIP</button></form>
+        <div class="zip-out" id="zipOut"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="container">
+    <div class="section-head"><div><span class="kicker">Communities we serve</span><h2>Central Ohio, covered</h2></div></div>
+    <div class="area-cards" id="areaCards"></div>
+  </div>
+</section>
+
+<section class="bg-soft">
+  <div class="container area-grid">
+    <div class="reveal">
+      <span class="kicker">Headquarters</span>
+      <h2 style="margin-top:.5rem">Visit our shop</h2>
+      <p class="lead" style="margin-top:1rem">4120 Indianola Ave, Columbus, OH 43214. Our office and parts warehouse are open Monday to Friday, 7am – 6pm.</p>
+      <ul class="towns" style="grid-template-columns:1fr">
+        <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Not listed? We often travel up to 40 miles for installations.</li>
+        <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>No extra trip charges anywhere in our service area.</li>
+      </ul>
+      <a href="contact.html" class="btn btn-primary">Book Service</a>
+    </div>
+    <div class="map reveal"><iframe title="Ironside headquarters map" loading="lazy" src="https://www.google.com/maps?q=Indianola+Ave,+Columbus,+OH+43214&z=12&hl=en&output=embed"></iframe></div>
+  </div>
+</section>
+</main>
+
+<div id="footer"></div>
+<script src="assets/data.js"></script>
+<script src="assets/main.js"></script>
+<script>
+const ETA = ['45 min', '1 hr', '1.5 hrs', '2 hrs'];
+$('#areaCards').innerHTML = AREAS.map((a, i) => `<div class="area-card reveal"><div><b>${a}</b><small>Heating · Cooling · Plumbing</small></div><span class="eta">~${ETA[i % 4]}</span></div>`).join('');
+bindZip($('#zipForm'), $('#zipOut'));
+observeReveals();
+</script>
+</body>
+</html>

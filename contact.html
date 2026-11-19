@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book Service — Ironside Heating, Cooling &amp; Plumbing Columbus, OH</title>
+<meta name="description" content="Book HVAC or plumbing service online with Ironside. Choose your service, preferred date and arrival window. 24/7 emergency service: (614) 555-0188.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='9' fill='%23ff6a1a'/><path d='M20 7 9 13v8c0 6.5 4.6 10.6 11 12.5 6.4-1.9 11-6 11-12.5v-8z' fill='%230b1f3a'/></svg>">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="contact">
+<div id="header"></div>
+
+<main>
+<section class="page-hero">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a> / Book Service</div>
+    <h1>Book a Service</h1>
+    <p>Request an appointment in under 2 minutes. We’ll confirm your arrival window by text — usually within 15 minutes.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container contact-grid">
+    <div class="booking" id="booking">
+      <form id="bookForm" novalidate>
+        <h2>Request an appointment</h2>
+        <fieldset class="fs">
+          <legend><span>1</span>What do you need?</legend>
+          <div class="field"><label for="service">Service</label><select id="service" required></select></div>
+          <div class="urgency">
+            <label class="em"><input type="radio" name="urg" value="emergency"><span><b>🚨 Emergency</b>No heat, no AC, active leak</span></label>
+            <label><input type="radio" name="urg" value="soon" checked><span><b>As soon as possible</b>Next available slot</span></label>
+            <label><input type="radio" name="urg" value="flex"><span><b>Flexible</b>Maintenance or estimate</span></label>
+          </div>
+          <div class="em-alert" id="emAlert">For emergencies, calling is fastest: <a href="tel:+16145550188">(614) 555-0188</a> — answered 24/7. You can still submit this form.</div>
+        </fieldset>
+        <fieldset class="fs">
+          <legend><span>2</span>When works for you?</legend>
+          <div class="row"><div class="field"><label for="date">Preferred date</label><input type="date" id="date" required></div><div class="field"><label>Arrival window</label><div class="slots" id="slots"></div></div></div>
+        </fieldset>
+        <fieldset class="fs">
+          <legend><span>3</span>Your details</legend>
+          <div class="row"><div class="field"><label for="fname">Full name</label><input id="fname" required autocomplete="name" placeholder="John Miller"></div><div class="field"><label for="phone">Mobile phone</label><input id="phone" type="tel" required autocomplete="tel" placeholder="(614) 555-0100"></div></div>
+          <div class="field"><label for="email">Email</label><input id="email" type="email" required autocomplete="email" placeholder="john@email.com"></div>
+          <div class="row3"><div class="field"><label for="addr">Street address</label><input id="addr" required autocomplete="street-address" placeholder="123 Main St"></div><div class="field"><label for="city">City</label><input id="city" value="Columbus" autocomplete="address-level2"></div><div class="field"><label for="zip">ZIP</label><input id="zip" required data-zip maxlength="5" inputmode="numeric" placeholder="43214"></div></div>
+          <div class="field"><label for="notes">Describe the problem <span style="font-weight:500;color:var(--muted)">(optional)</span></label><textarea id="notes" placeholder="e.g. Furnace is making a clicking noise and won't ignite"></textarea></div>
+        </fieldset>
+        <button class="btn btn-primary btn-lg" type="submit" style="width:100%">Request Appointment</button>
+        <p class="form-note">Demo form — no data is sent. No payment required to book.</p>
+      </form>
+      <div class="success" id="success">
+        <div class="ic"><svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h2>Request received!</h2>
+        <p id="sumText"></p>
+        <div class="ref" id="ref"></div>
+        <p>Need us sooner? Call <a href="tel:+16145550188" style="color:var(--orange);font-weight:700">(614) 555-0188</a></p>
+        <button class="btn btn-outline" id="again" style="margin-top:1.4rem">Book another service</button>
+      </div>
+    </div>
+    <aside>
+      <div class="info-card">
+        <h3>Contact us</h3>
+        <a class="info-line" href="tel:+16145550188"><span class="ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span><div><small>24/7 phone</small><b>(614) 555-0188</b></div></a>
+        <a class="info-line" href="mailto:service@ironsidecomfort.example"><span class="ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></span><div><small>Email</small><b>service@ironsidecomfort.example</b></div></a>
+        <div class="info-line"><span class="ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><small>Office</small><b>4120 Indianola Ave, Columbus, OH 43214</b></div></div>
+      </div>
+      <div class="info-card">
+        <h3>Office hours</h3>
+        <table class="hours" id="hours">
+          <tr data-d="1"><td>Monday</td><td>7am – 6pm</td></tr><tr data-d="2"><td>Tuesday</td><td>7am – 6pm</td></tr><tr data-d="3"><td>Wednesday</td><td>7am – 6pm</td></tr><tr data-d="4"><td>Thursday</td><td>7am – 6pm</td></tr><tr data-d="5"><td>Friday</td><td>7am – 6pm</td></tr><tr data-d="6"><td>Saturday</td><td>8am – 2pm</td></tr><tr data-d="0"><td>Sunday</td><td>Emergency only</td></tr>
+        </table>
+        <p style="margin-top:1rem;font-size:.92rem;color:var(--muted)"><b style="color:var(--orange)">Emergency line:</b> 24 hours a day, 365 days a year.</p>
+      </div>
+      <div class="map" style="min-height:260px"><iframe title="Ironside office map" loading="lazy" style="min-height:260px" src="https://www.google.com/maps?q=Indianola+Ave,+Columbus,+OH+43214&z=13&hl=en&output=embed"></iframe></div>
+    </aside>
+  </div>
+</section>
+</main>
+
+<div id="footer"></div>
+<script src="assets/data.js"></script>
+<script src="assets/main.js"></script>
+<script>
+const q = new URLSearchParams(location.search);
+const PLANS = { basic: 'Comfort Club — Basic plan', comfort: 'Comfort Club — Comfort plan', total: 'Comfort Club — Total Home plan' };
+$('#service').innerHTML = '<option value="">Choose a service…</option>' + CATS.map(c => `<optgroup label="${c.name}">${SERVICES.filter(s => s.cat === c.id).map(s => `<option value="${s.id}">${s.name}</option>`).join('')}</optgroup>`).join('') + `<optgroup label="Membership">${Object.entries(PLANS).map(([k, v]) => `<option value="plan-${k}">${v}</option>`).join('')}</optgroup><option value="other">Something else / not sure</option>`;
+if (q.get('service')) $('#service').value = q.get('service');
+if (q.get('plan')) $('#service').value = 'plan-' + q.get('plan');
+if (q.get('zip')) $('#zip').value = q.get('zip');
+const pad = n => String(n).padStart(2, '0'), ymd = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const t = new Date(); $('#date').min = ymd(t); const tm = new Date(t); tm.setDate(t.getDate() + 1); $('#date').value = ymd(tm);
+$('#slots').innerHTML = ['8–10 AM', '10 AM–12 PM', '12–2 PM', '2–4 PM', '4–6 PM'].map((s, i) => `<label><input type="radio" name="slot" value="${s}"${i === 1 ? ' checked' : ''}><span>${s}</span></label>`).join('');
+$$('input[name=urg]').forEach(r => r.addEventListener('change', () => $('#emAlert').classList.toggle('show', r.value === 'emergency' && r.checked)));
+const today = $(`#hours tr[data-d="${new Date().getDay()}"]`); if (today) today.classList.add('today');
+$('#bookForm').addEventListener('submit', e => {
+  e.preventDefault(); if (!validate(e.target)) return;
+  const svc = $('#service').selectedOptions[0].text, d = new Date($('#date').value + 'T12:00');
+  const when = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+  $('#sumText').innerHTML = `Thanks, ${$('#fname').value.trim().split(' ')[0]}! We’ve received your request for <b>${svc}</b> on <b>${when}</b>, ${$('input[name=slot]:checked').value}. We’ll text ${$('#phone').value} to confirm.`;
+  $('#ref').textContent = 'Request #IRN-' + Math.floor(100000 + Math.random() * 900000);
+  $('#booking').classList.add('sent'); scrollTo({ top: $('#booking').getBoundingClientRect().top + scrollY - 120, behavior: 'smooth' });
+});
+$('#again').addEventListener('click', () => { $('#bookForm').reset(); $('#booking').classList.remove('sent'); $('#date').value = ymd(tm); });
+observeReveals();
+</script>
+</body>
+</html>

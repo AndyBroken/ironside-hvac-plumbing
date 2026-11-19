@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Service Details — Ironside Heating, Cooling &amp; Plumbing</title>
+<meta name="description" content="Service details, pricing and FAQ from Ironside Heating, Cooling and Plumbing in Columbus, OH.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='9' fill='%23ff6a1a'/><path d='M20 7 9 13v8c0 6.5 4.6 10.6 11 12.5 6.4-1.9 11-6 11-12.5v-8z' fill='%230b1f3a'/></svg>">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="services">
+<div id="header"></div>
+
+<main>
+<section class="page-hero">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a> / <a href="services.html">Services</a> / <span id="crumb"></span></div>
+    <h1 id="title"></h1>
+    <p id="short"></p>
+  </div>
+</section>
+
+<section>
+  <div class="container sd-grid">
+    <article class="sd-main" id="main"></article>
+    <aside class="sidebar" id="side"></aside>
+  </div>
+</section>
+
+<section class="bg-soft">
+  <div class="container">
+    <div class="section-head"><div><span class="kicker">You might also need</span><h2>Related services</h2></div><a href="services.html" class="link-arrow">All services →</a></div>
+    <div class="svc-grid" id="related"></div>
+  </div>
+</section>
+</main>
+
+<div id="footer"></div>
+<script src="assets/data.js"></script>
+<script src="assets/main.js"></script>
+<script>
+const s = SERVICES.find(x => x.id === new URLSearchParams(location.search).get('id')) || SERVICES[0];
+const cat = CATS.find(c => c.id === s.cat);
+document.title = `${s.name} in Columbus, OH — Ironside`;
+$('#crumb').textContent = s.name; $('#title').textContent = s.name; $('#short').textContent = s.short;
+const li = (arr, ic) => arr.map(t => `<li>${icon(ic, 18)}${t}</li>`).join('');
+$('#main').innerHTML = `
+  <img class="cover" src="${IMG(s.img, 1400)}" alt="${s.name}">
+  <span class="kicker">${cat.name}</span>
+  <p style="margin-top:.6rem">${s.desc}</p>
+  <h2>Signs you need ${s.name.toLowerCase()}</h2>
+  <ul class="checklist warn reveal">${li(s.signs, 'gauge')}</ul>
+  <h2>What’s included</h2>
+  <ul class="checklist reveal">${li(s.includes, 'check')}</ul>
+  <h2>How it works</h2>
+  <div class="process reveal">
+    <div><b>Book</b><p>Online or by phone — same-day slots available.</p></div>
+    <div><b>Diagnose</b><p>Your tech inspects and explains the issue.</p></div>
+    <div><b>Approve</b><p>You see a flat-rate price before any work.</p></div>
+    <div><b>Fix &amp; clean</b><p>Done right, area cleaned, warranty issued.</p></div>
+  </div>
+  <h2>${s.name} FAQ</h2>
+  <div>${faqList(s.faq)}</div>`;
+$('#side').innerHTML = `
+  <div class="side-card">
+    <div class="from">Starting at<b>${money(s.price)}</b>${s.unit}</div>
+    <ul><li>${icon('check', 16)}Upfront, flat-rate price</li><li>${icon('check', 16)}Licensed &amp; insured techs</li><li>${icon('check', 16)}Financing available</li><li>${icon('check', 16)}Satisfaction guaranteed</li></ul>
+    <a href="contact.html?service=${s.id}" class="btn btn-primary btn-lg">Book ${s.name}</a>
+    <a href="${TEL}" class="btn btn-outline">${icon('phone', 18)} ${PHONE}</a>
+  </div>
+  <div class="side-emergency"><h4>Emergency?</h4><p>No heat, no cooling or water leaking? We’re available 24/7.</p><a href="${TEL}">${PHONE}</a></div>`;
+$('#related').innerHTML = SERVICES.filter(x => x.id !== s.id).sort((a, b) => (b.cat === s.cat) - (a.cat === s.cat)).slice(0, 3).map(serviceCard).join('');
+observeReveals();
+</script>
+</body>
+</html>

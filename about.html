@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Ironside — Family-Owned HVAC &amp; Plumbing in Columbus, OH</title>
+<meta name="description" content="Meet the Ironside team: a family-owned heating, cooling and plumbing company serving Central Ohio since 2009.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='9' fill='%23ff6a1a'/><path d='M20 7 9 13v8c0 6.5 4.6 10.6 11 12.5 6.4-1.9 11-6 11-12.5v-8z' fill='%230b1f3a'/></svg>">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="about">
+<div id="header"></div>
+
+<main>
+<section class="page-hero">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a> / About</div>
+    <h1>Built on showing up</h1>
+    <p>Ironside started in 2009 with one van, one technician and a simple promise: show up on time, tell the truth and fix it right.</p>
+  </div>
+</section>
+
+<div class="container"><div class="stats" id="stats"></div></div>
+
+<section>
+  <div class="container why-grid">
+    <div class="reveal">
+      <span class="kicker">Our story</span>
+      <h2 style="margin-top:.5rem">From a garage in Clintonville to 40 trucks on the road</h2>
+      <p class="lead" style="margin-top:1rem">Marcus Reyes spent ten years at big HVAC chains watching customers get upsold on equipment they didn’t need. So he started his own company out of his garage — with honest advice as the business plan.</p>
+      <p style="margin-top:1rem;color:var(--muted)">Seventeen years later, Ironside has grown into a team of 60+ technicians, plumbers and support staff. We’re still family-owned, still answer the phone 24/7, and still give every customer a flat-rate price before touching a tool.</p>
+    </div>
+    <div class="why-img reveal">
+      <img src="https://images.unsplash.com/photo-1676210134190-3f2c0d5cf58d?auto=format&fit=crop&w=1000&q=80" alt="Ironside technician at work" loading="lazy">
+      <div class="years"><b>60+</b>team<br>members</div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-navy">
+  <div class="container">
+    <div class="section-head"><div><span class="kicker">What we stand for</span><h2>Our values</h2></div></div>
+    <div class="values" id="values"></div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="container">
+    <div class="section-head"><div><span class="kicker">The people</span><h2>Meet the team</h2><p>Every Ironside technician is background-checked, drug-tested and trained in our own training center.</p></div><a href="contact.html" class="link-arrow">Join our team →</a></div>
+    <div class="team-grid" id="teamGrid"></div>
+  </div>
+</section>
+
+<section class="bg-soft">
+  <div class="container">
+    <div class="section-head"><div><span class="kicker">Milestones</span><h2>How we got here</h2></div></div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head center"><div><span class="kicker">The Ironside promise</span><h2>Our guarantees to you</h2></div></div>
+    <div class="promise" id="promise"></div>
+  </div>
+</section>
+</main>
+
+<div id="footer"></div>
+<script src="assets/data.js"></script>
+<script src="assets/main.js"></script>
+<script>
+$('#stats').innerHTML = [['17', 'years in business'], ['48k+', 'homes served'], ['4.9★', 'average rating'], ['24/7', 'emergency service']].map(([b, s]) => `<div class="stat reveal"><b>${b}</b><span>${s}</span></div>`).join('');
+$('#values').innerHTML = [['clock', 'Respect your time', 'Two-hour arrival windows, text updates and a tech who calls if anything changes.'], ['tag', 'Honest pricing', 'Flat-rate quotes before any work and good-better-best options — never pressure.'], ['shield', 'Own the result', 'If it’s not right, we come back and make it right. Every repair is warrantied.']]
+  .map(([i, h, p]) => `<div class="value reveal"><div class="ic">${icon(i, 34)}</div><h3>${h}</h3><p>${p}</p></div>`).join('');
+$('#teamGrid').innerHTML = TEAM.map(m => `<div class="member reveal"><img src="${IMG(m.img, 600)}" alt="${m.n}" loading="lazy"><div><h3>${m.n}</h3><span class="role">${m.r}</span><p>${m.b}</p><span class="yrs">${m.y} years experience</span></div></div>`).join('');
+$('#timeline').innerHTML = [['2009', 'Marcus opens Ironside with one van in Clintonville.'], ['2014', 'Plumbing division launches; team grows to 15.'], ['2019', 'Training center opens and the Comfort Club reaches 5,000 members.'], ['2026', '40 trucks, 60+ team members and 48,000 homes served.']]
+  .map(([y, t]) => `<div class="tl reveal"><b>${y}</b><p>${t}</p></div>`).join('');
+$('#promise').innerHTML = ['On-time arrival or $50 off', 'Upfront flat-rate pricing', '1-year repair warranty', '100% satisfaction'].map(t => `<div class="reveal">${icon('shield', 22)}${t}</div>`).join('');
+observeReveals();
+</script>
+</body>
+</html>

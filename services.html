@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HVAC &amp; Plumbing Services — Ironside Columbus, OH</title>
+<meta name="description" content="AC repair and installation, furnace repair, heat pumps, plumbing, water heaters, drain cleaning and indoor air quality in Columbus, OH. Upfront flat-rate pricing.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='9' fill='%23ff6a1a'/><path d='M20 7 9 13v8c0 6.5 4.6 10.6 11 12.5 6.4-1.9 11-6 11-12.5v-8z' fill='%230b1f3a'/></svg>">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="services">
+<div id="header"></div>
+
+<main>
+<section class="page-hero">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a> / Services</div>
+    <h1>Our Services</h1>
+    <p>Repair, maintenance and installation for every system in your home — with prices published up front.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="filters" id="filters"></div>
+    <div class="svc-grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="bg-soft" id="plans">
+  <div class="container">
+    <div class="section-head center"><div><span class="kicker">Maintenance plans</span><h2>Comfort Club membership</h2><p>Prevent most breakdowns with regular maintenance — and save on everything else.</p></div></div>
+    <div class="table-wrap reveal">
+      <table class="compare">
+        <thead><tr><th>Plan benefits</th><th>Basic<br><small style="font:500 .9rem var(--sans);text-transform:none">$9.95/mo</small></th><th class="hl">Comfort<br><small style="font:500 .9rem var(--sans);text-transform:none">$14.95/mo · popular</small></th><th>Total Home<br><small style="font:500 .9rem var(--sans);text-transform:none">$24.95/mo</small></th></tr></thead>
+        <tbody>
+          <tr><td>HVAC tune-ups per year</td><td>1</td><td class="hl">2</td><td>2</td></tr>
+          <tr><td>Plumbing inspection</td><td class="no">—</td><td class="hl yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Water heater flush</td><td class="no">—</td><td class="hl yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Repair discount</td><td>10%</td><td class="hl">15%</td><td>20%</td></tr>
+          <tr><td>Priority scheduling</td><td class="yes">✓</td><td class="hl yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>No after-hours fees</td><td class="no">—</td><td class="hl yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Free drain cleaning</td><td class="no">—</td><td class="hl no">—</td><td>1 / year</td></tr>
+          <tr><td></td><td><a href="contact.html?plan=basic" class="btn btn-outline">Join Basic</a></td><td class="hl"><a href="contact.html?plan=comfort" class="btn btn-primary">Join Comfort</a></td><td><a href="contact.html?plan=total" class="btn btn-outline">Join Total</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+</main>
+
+<div id="footer"></div>
+<script src="assets/data.js"></script>
+<script src="assets/main.js"></script>
+<script>
+const grid = $('#grid'), filters = $('#filters');
+const ALL = [{ id: 'all', name: 'All services' }, ...CATS];
+filters.innerHTML = ALL.map(c => `<button class="chip" data-cat="${c.id}">${c.icon ? icon(c.icon, 16) : ''}${c.name}<span class="count">${c.id === 'all' ? SERVICES.length : SERVICES.filter(s => s.cat === c.id).length}</span></button>`).join('');
+function show(cat) {
+  if (!ALL.some(c => c.id === cat)) cat = 'all';
+  $$('.chip').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+  grid.innerHTML = SERVICES.filter(s => cat === 'all' || s.cat === cat).map(serviceCard).join('');
+  observeReveals();
+}
+filters.addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; history.replaceState(null, '', b.dataset.cat === 'all' ? 'services.html' : '#' + b.dataset.cat); show(b.dataset.cat); });
+show(location.hash.slice(1) === 'plans' ? 'all' : location.hash.slice(1) || 'all');
+observeReveals();
+</script>
+</body>
+</html>
