@@ -402,6 +402,7 @@ textarea{min-height:110px;resize:vertical}
   .plan-band,.booking,.zip-big,.rating-box{padding:1.6rem}
   .zip-form{flex-direction:column}
   .fab-call{display:grid}
+  .foot-bottom{padding-bottom:72px}
   .cta-actions,.cta-actions .btn{width:100%}
   .hero .container{padding:56px 0 64px}
   .map,.map iframe{min-height:320px}
