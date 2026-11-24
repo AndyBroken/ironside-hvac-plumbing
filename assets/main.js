@@ -1,3 +1,4 @@
+/*! © 2026 Andrey (github.com/AndyBroken). All rights reserved. Concept / demo project, see LICENSE. */
 // Shared header / footer so every page stays in sync
 const LOGO = `<svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#ff6a1a"/><path d="M20 7 9 13v8c0 6.5 4.6 10.6 11 12.5 6.4-1.9 11-6 11-12.5v-8z" fill="#0b1f3a"/><path d="M20 13c2.6 3.2 4.4 5.3 4.4 8a4.4 4.4 0 0 1-8.8 0c0-1.4.6-2.6 1.6-3.8.2 1.4 1 2.2 1.9 2.4-.6-2.3.1-4.4.9-6.6z" fill="#ff6a1a"/></svg>`;
 const page = document.body.dataset.page;
@@ -42,7 +43,7 @@ document.getElementById('footer').outerHTML = `
       <div><h5>Company</h5><ul><li><a href="about.html">About Us</a></li><li><a href="about.html#team">Our Team</a></li><li><a href="areas.html">Service Areas</a></li><li><a href="reviews.html">Reviews</a></li><li><a href="reviews.html#faq">FAQ</a></li></ul></div>
       <div><h5>Contact</h5><ul><li><a href="${TEL}">${PHONE}</a></li><li><a href="mailto:${EMAIL}">${EMAIL}</a></li><li>4120 Indianola Ave<br>Columbus, OH 43214</li><li>Office: Mon–Fri 7am–6pm<br>Emergency: 24/7</li></ul></div>
     </div>
-    <div class="foot-bottom"><span>© ${new Date().getFullYear()} Ironside Heating, Cooling &amp; Plumbing</span><span>Concept website · Demo project</span></div>
+    <div class="foot-bottom"><span>© ${new Date().getFullYear()} Ironside Heating, Cooling &amp; Plumbing</span><span>Concept website · Demo project · Design &amp; code © 2026 Andrey (AndyBroken)</span></div>
   </div>
 </footer>
 <a href="${TEL}" class="fab-call" aria-label="Call now">${icon('phone', 22)}</a>

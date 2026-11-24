@@ -9,3 +9,7 @@ Multi-page website for an HVAC and plumbing company in Columbus, OH.
 **Tech:** HTML5, CSS3, vanilla JavaScript. Photos: Unsplash.
 
 *Concept / demo project — Ironside is a fictional brand. Forms send nothing.*
+
+## License
+
+© 2026 Andrey ([AndyBroken](https://github.com/AndyBroken)). All rights reserved. This is a portfolio demo: you may view it, but not copy or reuse the code or design. See [LICENSE](LICENSE).

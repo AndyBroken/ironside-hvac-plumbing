@@ -1,3 +1,4 @@
+/*! © 2026 Andrey (github.com/AndyBroken). All rights reserved. Concept / demo project, see LICENSE. */
 const IMG = (id, w = 900) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 const PHONE = '(614) 555-0188', TEL = 'tel:+16145550188', EMAIL = 'service@ironsidecomfort.example';
 
